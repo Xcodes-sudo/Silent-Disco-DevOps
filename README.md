@@ -238,9 +238,3 @@ The monitoring infrastructure consists of three interconnected systems:
 - **Kubernetes Ingress**: Replace NodePort mappings with an NGINX Ingress Controller and configure custom host domain routing.
 - **Automated Deployment from Jenkins**: Extend the CI/CD pipeline to automatically rebuild Docker images and apply changes to Kubernetes using GitOps or trigger deployment scripts.
 - **Production-Ready Monitoring**: Implement alert notifications via Slack or email notifications on Nagios/Grafana thresholds.
-
----
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE details for permissions and guidelines.
