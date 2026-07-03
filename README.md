@@ -1,50 +1,60 @@
-# Silent Disco DevOps - College Event Website
+# Silent Disco DevOps - Event Website & Deployment Infrastructure
 
-A Project based on a static multi-page website converted into a standardized Spring Boot Maven application running on Java 21. This project acts as the foundation for modern CI/CD, Containerization, Orchestration, and Monitoring practices.
-
-## Project Overview
-This repository contains a responsive, dark-themed **Silent Disco College Event Website**. Originally built as a static client-side web application integrating Supabase database client for user registrations, the application has been wrapped in a Spring Boot Maven web structure. The backend Tomcat web server hosts the website and serves all assets (HTML, CSS, JS, images) statically at the root context directory, preserving all relative file paths.
+A responsive, modern dark-themed Silent Disco college event website wrapped in a standardized Spring Boot Maven application running on Java 21. This repository implements and showcases best practices in automated CI/CD pipelines, containerization, orchestration, infrastructure monitoring, and metrics visualization.
 
 ---
 
 ## Features
-- **Modern Landing Page**: High-contrast bento grid layout representing the immersive silent disco event, channels information, and schedule.
-- **Interactive Registration System**: Browser-side validation and secure database storage powered by Supabase.
-- **Headset Ticket Reservation**: Collision-free unique Ticket ID generation (`SD-2025-{timestamp}-{random}`).
-- **Asymmetric Channels Grid**: Informative section explaining frequency mappings for the 3 DJ channels (Blue, Pink, Green).
-- **Spring Boot Standard Wrapper**: Leverages Java 23 and Spring Boot Web Starter to host the application.
-- **Maven Wrapper Integration**: Supports portable build execution via `.mvnw` without necessitating global Maven installations.
+
+- **Spring Boot Web Application**: Houses the static multi-page website (including registration, event info, and ticket confirmation) served at the root context directory via an embedded Apache Tomcat server.
+- **Maven Build System**: Modular lifecycle management compiled and packaged cleanly utilizing portable Maven Wrapper commands.
+- **Jenkins CI/CD Pipeline**: Scripted build automation pipeline validating checkout, compilation, unit tests, packaging, and archiving.
+- **Docker Containerization**: Production-ready, multi-stage Docker builds separating the compilation environment (JDK 21) from the minimal execution environment (JRE 21) to optimize image size and security.
+- **Kubernetes Deployment**: Orchestration configurations declaring dual replicas, liveness/readiness health probes, and a NodePort service mapping port 30080 on Docker Desktop's Kubernetes cluster.
+- **Nagios Monitoring**: Proactive host and availability checks ensuring the cluster node and HTTP web app pages respond with code 200 OK.
+- **Graphite Metrics Collection**: Carbon TCP/UDP line receivers collecting performance metrics and storing them in persistent Whisper time-series database directories.
+- **Grafana Dashboards**: File-based auto-provisioned dashboards rendering live graphs for custom app clicks and internal system CPU metrics.
+- **GitHub Version Control**: Standardized directory structure, exclusion definitions (.gitignore, .dockerignore), and pipeline configurations.
 
 ---
 
-## Technologies Used
-* **Core Language:** Java 21
-* **Framework:** Spring Boot 3.3.4 (Starter Web, Starter Test)
-* **Build System:** Apache Maven (with Maven Wrapper `mvnw`)
-* **Frontend Web Stack:** HTML5, CSS3, Tailwind CSS (via CDN), JavaScript (ES6)
-* **Database & BaaS:** Supabase JS SDK (Client-side integration)
-* **Aesthetics & Design:** Material Symbols Outlined, Google Fonts (Anton, Inter, JetBrains Mono)
+## Technology Stack
+
+| Technology | Purpose | Version |
+| :--- | :--- | :--- |
+| **Java** | Programming Language & Runtime | 21 |
+| **Spring Boot** | Embedded Web Server & Application Framework | 3.3.4 (Starter Web) |
+| **Maven** | Dependency Management & Build Lifecycle | 3.x (Wrapper Integrated) |
+| **Jenkins** | CI/CD Pipeline Automation | Pipeline Core |
+| **Docker** | Containerization & Multi-Container Compose | Docker Desktop v20.x+ |
+| **Kubernetes** | Container Orchestration | v1.36+ (Control Plane Node) |
+| **Nagios** | Infrastructure Availability & Host Monitoring | Core v4.5.7 |
+| **Graphite** | Time-series Metrics Ingestion & Carbon Cache | v1.1.10-4 |
+| **Grafana** | Operational Dashboards & Visualization | v10.4.2 |
+| **Git** | Distributed Version Control | Local Engine |
+| **GitHub** | Remote Source Code Hosting | Repository |
 
 ---
 
 ## Project Structure
+
 ```text
 Silent-Disco-DevOps/
-├── .mvn/                             # Maven Wrapper properties and jar binaries
+├── .mvn/                             # Maven Wrapper properties and binaries
 │   └── wrapper/
 │       ├── maven-wrapper.jar
 │       └── maven-wrapper.properties
 ├── src/
 │   └── main/
-│       ├── java/                     # Java Source Files
+│       ├── java/                     # Application source files
 │       │   └── com/
 │       │       └── silentdisco/
 │       │           └── devops/
 │       │               └── SilentDiscoApplication.java
-│       └── resources/                # Properties and Static Web Files
+│       └── resources/                # Configuration and static web assets
 │           ├── application.properties
 │           └── static/
-│               ├── assets/           # Event images and artwork
+│               ├── assets/           # Event images and visuals
 │               │   ├── dj_cyan.png
 │               │   ├── dj_magenta.png
 │               │   └── dj_neon.png
@@ -52,78 +62,156 @@ Silent-Disco-DevOps/
 │               ├── event-info.html
 │               ├── index.html
 │               ├── register.html
-│               └── supabase.js       # Supabase client initialization
-├── .gitignore                        # Standard files to ignore in Git
+│               └── supabase.js       # Supabase client integration
+├── nagios/
+│   └── conf.d/
+│       └── silent_disco.cfg          # Custom host and HTTP service definitions
+├── grafana/
+│   └── provisioning/
+│       ├── datasources/
+│       │   └── graphite.yaml         # Auto-provisioned Graphite data source
+│       └── dashboards/
+│           ├── dashboards.yaml       # Auto-provisioned dashboard providers
+│           └── silent_disco.json     # Custom performance visualization JSON
+├── Dockerfile                        # Multi-stage JRE 21 container definition
+├── docker-compose.yml                # Nagios, Graphite, and Grafana deployment
+├── Jenkinsfile                       # Multi-stage CI pipeline script
+├── deployment.yaml                   # Kubernetes Deployment manifest
+├── service.yaml                      # Kubernetes NodePort Service manifest
+├── .dockerignore                     # Exclusions for container contexts
+├── .gitignore                        # Exclusions for Git version control
 ├── mvnw                              # Unix Maven Wrapper script
 ├── mvnw.cmd                          # Windows Maven Wrapper script
-└── pom.xml                           # Maven project config (Spring Boot & dependencies)
+└── pom.xml                           # Maven project configuration file
 ```
 
 ---
 
-## Build Instructions
+## Setup Instructions
 
-### Prerequisites
-Before compiling the project, verify that **Java 21/25 JDK** is installed on your operating system:
-```cmd
-java -version
-```
-Additionally, ensure you set the `JAVA_HOME` environment variable to point to your JDK installation (e.g. `C:\Program Files\Java\jdk-21` on Windows).
-
-### Compiling and Packaging
-To clean, compile, run tests, and package the application into an executable fat-jar:
-
-**Windows CMD:**
-```cmd
-set JAVA_HOME=C:\Program Files\Java\jdk-21
-mvnw.cmd clean package
-```
-
-**PowerShell:**
-```powershell
-$env:JAVA_HOME = "C:\Program Files\Java\jdk-21"
-.\mvnw.cmd clean package
-```
-
-**macOS / Linux:**
+### 1. Clone the Repository
 ```bash
-export JAVA_HOME=/path/to/jdk-21
+git clone https://github.com/your-username/Silent-Disco-DevOps.git
+cd Silent-Disco-DevOps
+```
+
+### 2. Build with Maven Wrapper
+Compile the Java code and package it into an executable JAR file:
+```cmd
+# Windows
+.\mvnw.cmd clean package
+
+# macOS / Linux
 chmod +x mvnw
 ./mvnw clean package
 ```
 
-The output build file will be generated at `target/devops-0.0.1-SNAPSHOT.jar`.
-
----
-
-## Run Instructions
-
-To run the embedded Apache Tomcat server locally on port `8080`:
-
-**Windows CMD:**
+### 3. Run Locally
+Start the Spring Boot Tomcat server locally on port 8080:
 ```cmd
-set JAVA_HOME=C:\Program Files\Java\jdk-21
-mvnw.cmd spring-boot:run
-```
-
-**PowerShell:**
-```powershell
-$env:JAVA_HOME = "C:\Program Files\Java\jdk-21"
+# Windows
 .\mvnw.cmd spring-boot:run
-```
 
-Once running, access the local website at:
-**[http://localhost:8080/](http://localhost:8080/)**
+# macOS / Linux
+./mvnw spring-boot:run
+```
+Access the application at [http://localhost:8080/](http://localhost:8080/).
+
+### 4. Build and Run via Docker
+Build the multi-stage Docker image and launch it on port 8081 (to avoid conflicts with Jenkins/8080):
+```bash
+# Build
+docker build -t silent-disco-app:latest .
+
+# Run
+docker run -d --name silent-disco-container -p 8081:8080 silent-disco-app:latest
+```
+Access the application at [http://localhost:8081/](http://localhost:8081/).
+
+### 5. Deploy to Kubernetes
+Apply the Deployment and NodePort Service manifests on your local cluster:
+```bash
+# Deploy manifests
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+# Enable external access via port forwarding
+kubectl port-forward service/silent-disco-service 30080:8080 --address 127.0.0.1
+```
+Access the Kubernetes deployment at [http://localhost:30080/](http://localhost:30080/).
+
+### 6. Launch the Monitoring Stack
+Bring up the Nagios, Graphite, and Grafana containers:
+```bash
+docker compose up -d
+```
+Verify the health and logs of the monitoring servers using:
+```bash
+docker compose ps
+docker logs nagios-server
+docker logs graphite-server
+docker logs grafana-server
+```
 
 ---
 
-## Future DevOps Pipeline (Next Stages)
-This project is structured for seamless integration with modern automated pipelines:
-1. **Source Control (GitHub):** Standard project repository structure and `.gitignore` setup.
-2. **Continuous Integration (Jenkins):** Scripted Jenkinsfile deployment using `./mvnw clean package` for automated code verification.
-3. **Containerization (Docker):** Standard Multi-Stage Dockerfile containing JDK 21 runtime environments.
-4. **Orchestration (Kubernetes):** Kubernetes manifest deployments (`deployment.yaml`, `service.yaml`) for auto-scaling and traffic routing.
-5. **Monitoring & Logging (Nagios / Graphite / Grafana):** Incorporating Spring Boot Actuator metrics pushed to Prometheus/Graphite registries, with Grafana dashboards for visualization and Nagios health checks.
+## CI/CD Pipeline
 
-## Author
-Adityesh Raghav
+The `Jenkinsfile` configures a declarative pipeline containing the following core stages:
+
+1. **Checkout**: Retrieves the latest application codebase from the repository.
+2. **Clean Workspace**: Wipes any previous build artifacts to guarantee a clean compile.
+3. **Build**: Runs `mvnw compile` to compile application classes.
+4. **Test**: Executes unit test suites to prevent regression errors.
+5. **Package**: Compiles and packages binaries into `target/devops-0.0.1-SNAPSHOT.jar`, skipping test runs for efficiency.
+6. **Archive Artifacts**: Archives and stores the generated JAR file in Jenkins for release tracking.
+
+---
+
+## Monitoring Stack
+
+The monitoring infrastructure consists of three interconnected systems:
+
+- **Nagios (Port 8082)**: Validates uptime and availability. It queries the local network gateway and pings the Kubernetes NodePort IP. It continuously checks HTTP page responsiveness for `/`, `/index.html`, `/event-info.html`, `/register.html`, and `/confirmation.html`.
+  - *URL*: [http://localhost:8082/nagios/](http://localhost:8082/nagios/) (Credentials: `nagiosadmin` / `nagiosadmin`)
+- **Graphite (Port 8083)**: Handles time-series metric aggregation. It receives payloads via the Carbon TCP/UDP line receivers on port `2003` and persists metric databases under durable Whisper storage volumes.
+  - *URL*: [http://localhost:8083/](http://localhost:8083/)
+- **Grafana (Port 8084)**: Displays beautiful visual telemetry dashboards. It is pre-configured to query Graphite as its default datasource, plotting host resource statistics alongside custom application click-rate events.
+  - *URL*: [http://localhost:8084/](http://localhost:8084/) (Credentials: `admin` / `admin`)
+
+---
+
+## Screenshots
+
+*Note: Replace these placeholders with actual screenshots from your running deployment environments.*
+
+### Jenkins CI/CD Pipeline Execution
+![Jenkins Pipeline Placeholder](https://via.placeholder.com/800x400.png?text=Jenkins+CI-CD+Pipeline+Success+Screenshot)
+
+### Docker Container Running
+![Docker Status Placeholder](https://via.placeholder.com/800x400.png?text=Docker+Container+Execution+Screenshot)
+
+### Kubernetes Resources Deployments & Pods
+![Kubernetes Resources Placeholder](https://via.placeholder.com/800x400.png?text=Kubectl+Get+Pods+and+Deployments+Screenshot)
+
+### Nagios Core Dashboard (Host & Services)
+![Nagios Status Placeholder](https://via.placeholder.com/800x400.png?text=Nagios+Core+Hosts+and+HTTP+Checks+UP+Screenshot)
+
+### Grafana Visualization Dashboard
+![Grafana Performance Dashboard](https://via.placeholder.com/800x400.png?text=Grafana+Dashboard+Metrics+Charts+Screenshot)
+
+---
+
+## Future Enhancements
+
+- **Prometheus Integration**: Migrate from Carbon metrics to scrape native Spring Boot Actuator endpoints using a Prometheus collector.
+- **Helm Charts**: Package Kubernetes manifests into structured Helm charts to support parameterized deployments across environments (Dev, Staging, Prod).
+- **Kubernetes Ingress**: Replace NodePort mappings with an NGINX Ingress Controller and configure custom host domain routing.
+- **Automated Deployment from Jenkins**: Extend the CI/CD pipeline to automatically rebuild Docker images and apply changes to Kubernetes using GitOps or trigger deployment scripts.
+- **Production-Ready Monitoring**: Implement alert notifications via Slack or email notifications on Nagios/Grafana thresholds.
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE details for permissions and guidelines.
