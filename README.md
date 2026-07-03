@@ -141,8 +141,8 @@ Silent-Disco-DevOps/
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/Xcodes-sudo/Silent-Disco-DevOps.git
-cd Silent-Disco-DevOps
+git clone https://github.com/Xcodes-sudo/24MEI10071-DevOps-Project.git
+cd 24MEI10071-DevOps-Project
 ```
 
 ### 2. Build with Maven Wrapper
