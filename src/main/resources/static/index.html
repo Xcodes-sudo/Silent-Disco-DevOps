@@ -1,0 +1,329 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SILENT DISCO | The Great Get Together</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=JetBrains+Mono:wght@400;500&amp;family=Inter:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#00f0ff",
+                        "outline-variant": "#3b494b",
+                        "surface-tint": "#00dbe9",
+                        "on-surface-variant": "#b9cacb",
+                        "error": "#ffb4ab",
+                        "primary-fixed": "#7df4ff",
+                        "on-secondary-container": "#b4b5b5",
+                        "inverse-on-surface": "#313030",
+                        "tertiary-container": "#dcd9d8",
+                        "on-primary-container": "#006970",
+                        "secondary-fixed": "#e2e2e2",
+                        "surface-container-high": "#2a2a2a",
+                        "primary": "#dbfcff",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "on-background": "#e5e2e1",
+                        "background": "#131313",
+                        "on-primary-fixed-variant": "#004f54",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-secondary": "#2f3131",
+                        "surface-bright": "#3a3939",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface": "#131313",
+                        "surface-container": "#201f1f",
+                        "error-container": "#93000a",
+                        "secondary": "#c6c6c7",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#849495",
+                        "on-primary-fixed": "#002022",
+                        "surface-container-highest": "#353534",
+                        "on-secondary-fixed-variant": "#454747",
+                        "tertiary-fixed": "#e5e2e1",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "inverse-surface": "#e5e2e1",
+                        "on-error": "#690005",
+                        "surface-variant": "#353534",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-primary": "#00363a",
+                        "surface-container-low": "#1c1b1b",
+                        "on-tertiary-container": "#5f5e5e",
+                        "secondary-container": "#454747",
+                        "tertiary": "#f8f5f5",
+                        "surface-dim": "#131313",
+                        "on-tertiary": "#313030",
+                        "inverse-primary": "#006970",
+                        "on-surface": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "container-max": "1200px",
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Anton"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Anton"],
+                        "headline-lg": ["Anton"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["clamp(2.5rem, 8vw, 7rem)", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "label-mono": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                        "body-md": ["clamp(0.875rem, 1.2vw, 1rem)", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["clamp(0.95rem, 1.5vw, 1.125rem)", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["clamp(1.75rem, 4vw, 2.5rem)", {"lineHeight": "1.2", "fontWeight": "400"}],
+                        "headline-lg": ["clamp(2rem, 5vw, 4rem)", {"lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+            border-color: #00f0ff;
+        }
+        .text-stroke {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+            color: transparent;
+        }
+        @keyframes pulse-neon {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .live-dot {
+            animation: pulse-neon 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-background/60 backdrop-blur-xl dark:bg-background/60 fixed top-0 w-full z-50 border-b border-white/10">
+<div class="flex justify-between items-center px-4 sm:px-6 md:px-8 lg:px-12 h-20 w-full max-w-container-max mx-auto">
+<div class="font-display-lg text-headline-lg-mobile md:text-headline-lg text-on-background dark:text-on-background tracking-tighter uppercase whitespace-nowrap">SILENT DISCO</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-label-mono text-label-mono uppercase tracking-widest text-primary-container dark:text-primary-container border-b-2 border-primary-container pb-1" href="index.html">Home</a>
+<a class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="event-info.html">Event Info</a>
+<a class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="register.html">Register</a>
+</nav>
+<div class="flex items-center gap-4">
+<button onclick="window.location.href='register.html'" class="hidden md:block bg-on-background text-background font-label-mono text-label-mono px-6 py-2 uppercase tracking-widest hover:bg-primary-container transition-all active:scale-95">
+                    Tickets
+                </button>
+<a href="admin.html" class="contents" aria-label="Admin Dashboard">
+<span onclick="window.location.href='admin.html'" aria-label="Admin Dashboard" class="material-symbols-outlined text-primary scale-125 cursor-pointer hover:scale-110 transition-transform">account_circle</span>
+</a>
+<!-- Hamburger Button -->
+<button id="mobile-menu-btn" class="md:hidden text-primary p-1 focus:outline-none z-50 flex items-center justify-center">
+    <span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+</div>
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 pt-20 bg-background z-40 flex flex-col justify-center items-center gap-8 transition-transform duration-300 transform -translate-y-full md:hidden">
+<nav class="flex flex-col items-center gap-8">
+<a class="font-label-mono text-2xl uppercase tracking-widest text-primary-container border-b-2 border-primary-container pb-1" href="index.html">Home</a>
+<a class="font-label-mono text-2xl uppercase tracking-widest text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="event-info.html">Event Info</a>
+<a class="font-label-mono text-2xl uppercase tracking-widest text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="register.html">Register</a>
+</nav>
+<button onclick="window.location.href='register.html'" class="bg-on-background text-background font-label-mono text-label-mono px-8 py-3 uppercase tracking-widest hover:bg-primary-container transition-all active:scale-95 min-h-[48px]">
+    Tickets
+</button>
+</div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-4 sm:px-6 md:px-8 lg:px-12 py-16 md:py-24 overflow-hidden">
+<!-- Background Decorative Text -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-5">
+<h2 class="font-display-lg text-[clamp(4rem,20vw,15rem)] leading-none uppercase select-none">SILENT</h2>
+</div>
+<div class="z-10 max-w-4xl mx-auto space-y-8 w-full">
+<div class="flex items-center justify-center gap-2 mb-4">
+<span class="live-dot w-3 h-3 bg-primary-container rounded-full shadow-[0_0_10px_#00f0ff]"></span>
+<span class="font-label-mono text-label-mono uppercase tracking-[0.2em] text-primary-container">Live Channel Active</span>
+</div>
+<h1 class="font-display-lg text-display-lg uppercase leading-none tracking-tight">SILENT DISCO</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    Lose yourself in the rhythm. Experience three live DJs across three unique channels, delivered directly to your high-fidelity wireless headphones.
+                </p>
+<div class="flex flex-col md:flex-row gap-gutter justify-center items-center pt-8 w-full">
+<button onclick="window.location.href='register.html'" class="w-full md:w-auto bg-white text-black px-12 py-5 font-label-mono text-label-mono uppercase tracking-[0.2em] hover:bg-primary-container transition-all transform active:scale-90 glow-hover min-h-[48px]">
+                        Register Now
+                    </button>
+<button onclick="window.location.href='event-info.html'" class="w-full md:w-auto border-2 border-white px-12 py-5 font-label-mono text-label-mono uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all min-h-[48px]">
+                        Explore Channels
+                    </button>
+</div>
+</div>
+</section>
+<!-- Bento Grid Info Section -->
+<section class="px-4 sm:px-6 md:px-8 lg:px-12 py-20 max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter">
+<!-- Image/Atmosphere Card -->
+<div class="md:col-span-1 lg:col-span-8 relative aspect-video lg:aspect-auto h-auto lg:h-[400px] border border-white/10 overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0" alt="A cinematic, high-contrast shot of a large crowd at a silent disco event. People are wearing glowing neon blue headphones, dancing in a dark, atmospheric venue." data-alt="A cinematic, high-contrast shot of a large crowd at a silent disco event. People are wearing glowing neon blue headphones, dancing in a dark, atmospheric venue. The aesthetic is dark-mode minimalist with vibrant electric blue accents reflecting off surfaces, capturing a high-energy yet intimate musical experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZh43X7LNcYccrJcxsbNWIHFS9LuwBFbwgnhSsNyMJy38-KvzKqll45KfmzMHHc6EXvtpgHnqTqVH509qSYOPQj5GzVPVBLTY2D9hd9xRZ9mhzGsmmXpam8MpmJZOXY2SCK4IO4Ci1rwveaVXiVNqi-0HTF48fhgsnczwQZZY-AVhMG3iOdml2zIJOQD3pCQ7IcXOUXfcWIwPFouCzKR7ZBpZeMwuhyL_LKD7pu0RNRphn0d8svdIrKQ2oM23ev3_tyD9iiob6uVHd" loading="lazy">
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-8 left-8">
+<p class="font-label-mono text-label-mono text-primary-container mb-2">IMMERSIVE EXPERIENCE</p>
+<h3 class="font-display-lg text-headline-lg uppercase">Visual Silence. Sonic Riot.</h3>
+</div>
+</div>
+<!-- Event Details Card (Reference Inspired) -->
+<div class="md:col-span-1 lg:col-span-4 bg-surface-container border border-white/10 p-8 flex flex-col justify-between">
+<div class="space-y-12">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary-container scale-150">calendar_today</span>
+<div>
+<p class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant">Save the Date</p>
+<p class="font-display-lg text-2xl uppercase mt-1">18 Sept 2025</p>
+<p class="font-body-md text-on-surface-variant">1:15 PM to 4:20 PM</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary-container scale-150">location_on</span>
+<div>
+<p class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant">Venue</p>
+<p class="font-display-lg text-2xl uppercase mt-1">AB2-316</p>
+<p class="font-body-md text-on-surface-variant">Notion Community Hub</p>
+</div>
+</div>
+</div>
+<div class="pt-12 border-t border-white/10 mt-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">visibility</span>
+<p class="font-label-mono text-label-mono text-on-surface-variant">6,121 PEOPLE INTERESTED</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Channel Selection (Asymmetric Layout) -->
+<section id="channels" class="bg-surface-container-lowest py-20 md:py-32 overflow-hidden">
+<div class="max-w-container-max mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-20 gap-gutter">
+<div class="max-w-xl">
+<h2 class="font-display-lg text-headline-lg uppercase mb-6">Choose Your <span class="text-primary-container">Frequency</span></h2>
+<p class="font-body-lg text-on-surface-variant">Switch between curated channels in real-time. Your headphones will glow the color of your chosen DJ.</p>
+</div>
+<div class="font-label-mono text-headline-lg text-stroke select-none hidden md:block">CHANNELS</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-gutter">
+<!-- Channel 1 -->
+<div class="border-b-2 border-white/10 py-10 px-6 sm:px-8 md:p-8 hover:border-primary-container transition-all group cursor-pointer">
+<p class="font-label-mono text-label-mono mb-4 text-primary-container">01 / BLUE CHANNEL</p>
+<h4 class="font-display-lg text-headline-lg-mobile uppercase mb-4 transition-transform group-hover:translate-x-2">Deep House</h4>
+<p class="font-body-md text-on-surface-variant">Hypnotic rhythms and soulful basslines for the purists.</p>
+</div>
+<!-- Channel 2 -->
+<div class="border-b-2 border-white/10 py-10 px-6 sm:px-8 md:p-8 hover:border-[#ff00e5] transition-all group cursor-pointer">
+<p class="font-label-mono text-label-mono mb-4 text-[#ff00e5]">02 / PINK CHANNEL</p>
+<h4 class="font-display-lg text-headline-lg-mobile uppercase mb-4 transition-transform group-hover:translate-x-2">Neon Pop</h4>
+<p class="font-body-md text-on-surface-variant">Electrifying anthems and futuristic synth-pop melodies.</p>
+</div>
+<!-- Channel 3 -->
+<div class="border-b-2 border-white/10 py-10 px-6 sm:px-8 md:p-8 hover:border-[#7dff00] transition-all group cursor-pointer">
+<p class="font-label-mono text-label-mono mb-4 text-[#7dff00]">03 / GREEN CHANNEL</p>
+<h4 class="font-display-lg text-headline-lg-mobile uppercase mb-4 transition-transform group-hover:translate-x-2">Techno Pulse</h4>
+<p class="font-body-md text-on-surface-variant">High-octane, industrial beats for the nocturnal energy.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / Registration CTA -->
+<section class="py-20 md:py-32 px-4 sm:px-6 md:px-8 lg:px-12 text-center max-w-4xl mx-auto">
+<h3 class="font-display-lg text-headline-lg uppercase mb-8">Stay in the Loop</h3>
+<div class="flex flex-col md:flex-row md:relative max-w-lg mx-auto gap-6 md:gap-0">
+<input class="w-full bg-transparent border-b-2 border-white/20 py-4 px-2 font-label-mono text-label-mono uppercase focus:border-primary-container focus:ring-0 outline-none transition-colors md:pr-24" placeholder="EMAIL ADDRESS" type="email">
+<button class="w-full md:w-auto md:absolute md:right-0 md:bottom-4 py-4 md:py-0 font-label-mono text-label-mono text-primary-container uppercase hover:translate-x-2 transition-transform text-center md:text-right min-h-[48px] md:min-h-0 flex items-center justify-center md:inline-block">
+                    SUBSCRIBE
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-background dark:bg-background border-t border-white/10 w-full py-12">
+<div class="flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 md:px-8 lg:px-12 gap-gutter w-full max-w-container-max mx-auto">
+<div class="font-display-lg text-headline-lg text-primary uppercase text-center md:text-left">Organized by The Notion Club</div>
+<div class="flex gap-8 justify-center">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-container transition-colors" href="#">Privacy</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-container transition-colors" href="#">Terms</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-container transition-colors" href="#">Support</a>
+</div>
+<p class="font-label-mono text-label-mono text-on-surface-variant text-center md:text-right">
+                © 2025 NOTION COMMUNITY. ALL CHANNELS ACTIVE.
+            </p>
+</div>
+</footer>
+<script>
+        // Mobile Hamburger Menu logic
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = menuBtn ? menuBtn.querySelector('.material-symbols-outlined') : null;
+        
+        if (menuBtn && mobileMenu) {
+            const mobileLinks = mobileMenu.querySelectorAll('a, button');
+            
+            function toggleMenu() {
+                const isOpen = mobileMenu.classList.contains('translate-y-0');
+                if (isOpen) {
+                    mobileMenu.classList.remove('translate-y-0');
+                    mobileMenu.classList.add('-translate-y-full');
+                    if (menuIcon) menuIcon.textContent = 'menu';
+                } else {
+                    mobileMenu.classList.remove('-translate-y-full');
+                    mobileMenu.classList.add('translate-y-0');
+                    if (menuIcon) menuIcon.textContent = 'close';
+                }
+            }
+            
+            menuBtn.addEventListener('click', toggleMenu);
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('translate-y-0');
+                    mobileMenu.classList.add('-translate-y-full');
+                    if (menuIcon) menuIcon.textContent = 'menu';
+                });
+            });
+        }
+
+        // Simple parallax effect for the giant decorative text
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const bgText = document.querySelector('.absolute.inset-0 h2');
+            if (bgText) {
+                bgText.style.transform = `translateY(${scrolled * 0.2}px)`;
+            }
+        });
+
+        // Hover interactions for channel cards to simulate light bleed
+        document.querySelectorAll('.cursor-pointer').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.backgroundColor = 'rgba(255, 255, 255, 0.02)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.backgroundColor = 'transparent';
+            });
+        });
+    </script>
+</body></html>

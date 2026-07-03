@@ -1,0 +1,461 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Register | SILENT DISCO</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="supabase.js"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#00f0ff",
+                        "outline-variant": "#3b494b",
+                        "surface-tint": "#00dbe9",
+                        "on-surface-variant": "#b9cacb",
+                        "error": "#ffb4ab",
+                        "primary-fixed": "#7df4ff",
+                        "on-secondary-container": "#b4b5b5",
+                        "inverse-on-surface": "#313030",
+                        "tertiary-container": "#dcd9d8",
+                        "on-primary-container": "#006970",
+                        "secondary-fixed": "#e2e2e2",
+                        "surface-container-high": "#2a2a2a",
+                        "primary": "#dbfcff",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "on-background": "#e5e2e1",
+                        "background": "#131313",
+                        "on-primary-fixed-variant": "#004f54",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-secondary": "#2f3131",
+                        "surface-bright": "#3a3939",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface": "#131313",
+                        "surface-container": "#201f1f",
+                        "error-container": "#93000a",
+                        "secondary": "#c6c6c7",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#849495",
+                        "on-primary-fixed": "#002022",
+                        "surface-container-highest": "#353534",
+                        "on-secondary-fixed-variant": "#454747",
+                        "tertiary-fixed": "#e5e2e1",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "inverse-surface": "#e5e2e1",
+                        "on-error": "#690005",
+                        "surface-variant": "#353534",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-primary": "#00363a",
+                        "surface-container-low": "#1c1b1b",
+                        "on-tertiary-container": "#5f5e5e",
+                        "secondary-container": "#454747",
+                        "tertiary": "#f8f5f5",
+                        "surface-dim": "#131313",
+                        "on-tertiary": "#313030",
+                        "inverse-primary": "#006970",
+                        "on-surface": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "container-max": "1200px",
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Anton"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Anton"],
+                        "headline-lg": ["Anton"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["clamp(2.5rem, 8vw, 7rem)", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "label-mono": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                        "body-md": ["clamp(0.875rem, 1.2vw, 1rem)", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["clamp(0.95rem, 1.5vw, 1.125rem)", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["clamp(1.75rem, 4vw, 2.5rem)", {"lineHeight": "1.2", "fontWeight": "400"}],
+                        "headline-lg": ["clamp(2rem, 5vw, 4rem)", {"lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(19, 19, 19, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        input:focus + label,
+        input:not(:placeholder-shown) + label,
+        select:focus + label,
+        select:valid + label,
+        .has-content + label {
+            transform: translateY(-24px);
+            font-size: 12px;
+            color: #00f0ff;
+        }
+        .pulsing-dot {
+            box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.7);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 240, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
+        }
+        /* Browser Autofill Styling Override */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        textarea:-webkit-autofill,
+        select:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0px 1000px #131313 inset !important;
+            -webkit-text-fill-color: #e5e2e1 !important;
+            caret-color: #e5e2e1 !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+    </style>
+
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background/60 backdrop-blur-xl dark:bg-background/60 border-b border-white/10 h-20">
+<div class="flex justify-between items-center px-4 sm:px-6 md:px-8 lg:px-12 h-full w-full max-w-container-max mx-auto">
+<div class="font-display-lg text-headline-lg-mobile md:text-headline-lg text-on-background dark:text-on-background tracking-tighter uppercase whitespace-nowrap">SILENT DISCO</div>
+<nav class="hidden md:flex gap-8">
+<a class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="index.html">Home</a>
+<a class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="event-info.html">Event Info</a>
+<a class="font-label-mono text-label-mono uppercase tracking-widest text-primary-container dark:text-primary-container border-b-2 border-primary-container pb-1" href="register.html">Register</a>
+</nav>
+<div class="flex items-center gap-4">
+<button onclick="window.location.href='register.html'" class="hidden md:block font-label-mono text-label-mono uppercase bg-on-background text-background px-6 py-2 transition-all hover:bg-primary-container active:scale-95">Tickets</button>
+<a href="admin.html" class="contents" aria-label="Admin Dashboard">
+<span onclick="window.location.href='admin.html'" aria-label="Admin Dashboard" class="material-symbols-outlined text-primary scale-125 cursor-pointer" data-icon="account_circle">account_circle</span>
+</a>
+<!-- Hamburger Button -->
+<button id="mobile-menu-btn" class="md:hidden text-primary p-1 focus:outline-none z-50 flex items-center justify-center">
+    <span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+</div>
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 pt-20 bg-background z-40 flex flex-col justify-center items-center gap-8 transition-transform duration-300 transform -translate-y-full md:hidden">
+<nav class="flex flex-col items-center gap-8">
+<a class="font-label-mono text-2xl uppercase tracking-widest text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="index.html">Home</a>
+<a class="font-label-mono text-2xl uppercase tracking-widest text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors" href="event-info.html">Event Info</a>
+<a class="font-label-mono text-2xl uppercase tracking-widest text-primary-container border-b-2 border-primary-container pb-1" href="register.html">Register</a>
+</nav>
+<button onclick="window.location.href='register.html'" class="bg-on-background text-background font-label-mono text-label-mono px-8 py-3 uppercase tracking-widest hover:bg-primary-container transition-all active:scale-95 min-h-[48px]">
+    Tickets
+</button>
+</div>
+</header>
+<main class="pt-32 pb-24 px-4 sm:px-6 md:px-8 lg:px-12 max-w-container-max mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Context / Visual Side -->
+<div class="lg:col-span-5 flex flex-col gap-12">
+<div>
+<div class="flex items-center gap-2 mb-4">
+<div class="w-3 h-3 bg-primary-container rounded-full pulsing-dot"></div>
+<span class="font-label-mono text-label-mono text-primary-container tracking-widest uppercase">Registration Live</span>
+</div>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg leading-none mb-6">SILENT DISCO</h1>
+<p class="font-body-lg text-on-surface-variant max-w-md">Join the most exclusive immersive sound experience of 2025. Secure your headset for the midnight session at Venue AB2-316.</p>
+</div>
+<div class="flex flex-col gap-8">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary-container text-4xl" data-icon="calendar_month">calendar_month</span>
+<div>
+<p class="font-label-mono text-label-mono uppercase text-on-surface-variant">Date &amp; Time</p>
+<p class="font-display-lg text-headline-lg-mobile">18 SEPT 2025</p>
+<p class="font-label-mono text-label-mono">1:15 PM TO 4:20 PM</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary-container text-4xl" data-icon="location_on">location_on</span>
+<div>
+<p class="font-label-mono text-label-mono uppercase text-on-surface-variant">Venue Location</p>
+<p class="font-display-lg text-headline-lg-mobile">AB2-316</p>
+<p class="font-label-mono text-label-mono uppercase">Main Auditorium Wing</p>
+</div>
+</div>
+</div>
+<div class="relative w-full aspect-video overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-700" alt="A moody, high-contrast photograph of a dark music venue filled with people wearing glowing blue wireless headphones." data-alt="A moody, high-contrast photograph of a dark music venue filled with people wearing glowing blue wireless headphones. The lighting is dominated by deep blacks and vibrant electric blue neon silhouettes. The atmosphere is energetic yet silent, reflecting the unique experience of a high-end silent disco event in a modern, minimalist architectural space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDWe8D9lXcypIn9Z624zsY1iUkBNHUvgVRm_VJmQfZkdL_yWvX-HmLVIcZM3jCJeL68YfbXTNiqEk3GJnJfCHUbKCW3kZJTbjk3-xHa5nbDXTzgxcb7-iS7BqVyb2rlW9i1W4wBEXWWOHNKyqXiWbVScIFK6t7cbWhmpjPO4nDECVXfpipxR-a9bpg3iBY4gkzmeIkUNjU0VZXpXkXRqOsNJIf99FCZ0shJ19eldJRnKs6gGYi_9pVsexhFqHkRbZ0QrC7HynSzd_p" loading="lazy">
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+</div>
+</div>
+<!-- Form Side -->
+<div class="lg:col-span-7">
+<div class="glass-panel p-6 sm:p-8 md:p-12 rounded-xl">
+<form class="flex flex-col gap-10" id="registrationForm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<!-- Full Name -->
+<div class="relative">
+<input class="peer w-full bg-transparent border-0 border-b-2 border-white/20 px-0 py-3 text-on-background focus:ring-0 focus:border-primary-container transition-colors font-body-lg" id="fullName" name="fullName" placeholder=" " required="" type="text">
+<label class="absolute left-0 top-3 text-on-surface-variant transition-all pointer-events-none font-label-mono uppercase tracking-widest" for="fullName">Full Name</label>
+</div>
+<!-- Email -->
+<div class="relative">
+<input class="peer w-full bg-transparent border-0 border-b-2 border-white/20 px-0 py-3 text-on-background focus:ring-0 focus:border-primary-container transition-colors font-body-lg" id="email" name="email" placeholder=" " required="" type="email">
+<label class="absolute left-0 top-3 text-on-surface-variant transition-all pointer-events-none font-label-mono uppercase tracking-widest" for="email">Email Address</label>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<!-- Contact Number -->
+<div class="relative">
+<input class="peer w-full bg-transparent border-0 border-b-2 border-white/20 px-0 py-3 text-on-background focus:ring-0 focus:border-primary-container transition-colors font-body-lg" id="contact" name="contact" placeholder=" " required="" type="tel">
+<label class="absolute left-0 top-3 text-on-surface-variant transition-all pointer-events-none font-label-mono uppercase tracking-widest" for="contact">Contact Number</label>
+</div>
+<!-- College/Branch -->
+<div class="relative">
+<input class="peer w-full bg-transparent border-0 border-b-2 border-white/20 px-0 py-3 text-on-background focus:ring-0 focus:border-primary-container transition-colors font-body-lg" id="college" name="college" placeholder=" " required="" type="text">
+<label class="absolute left-0 top-3 text-on-surface-variant transition-all pointer-events-none font-label-mono uppercase tracking-widest" for="college">Branch</label>
+</div><div class="relative">
+<select class="peer w-full bg-transparent border-0 border-b-2 border-white/20 px-0 py-3 text-on-background focus:ring-0 focus:border-primary-container transition-colors font-body-lg appearance-none cursor-pointer" id="academicYear" name="academicYear" required="">
+<option value="" disabled="" selected="" hidden=""></option>
+<option value="1st" class="bg-surface text-on-background">1st</option>
+<option value="2nd" class="bg-surface text-on-background">2nd</option>
+<option value="3rd" class="bg-surface text-on-background">3rd</option>
+<option value="4th+" class="bg-surface text-on-background">4th/4th+</option>
+</select>
+<label class="absolute left-0 top-3 text-on-surface-variant transition-all pointer-events-none font-label-mono uppercase tracking-widest" for="academicYear">Academic Year</label>
+<span class="material-symbols-outlined absolute right-0 top-3 text-on-surface-variant pointer-events-none" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</div>
+</div>
+<!-- Year Selection (Custom Radio Pattern) -->
+<!-- Textarea -->
+<!-- Terms & Conditions -->
+<div class="flex items-start gap-3">
+<input class="w-5 h-5 rounded border-white/20 bg-transparent text-primary-container focus:ring-primary-container/20 cursor-pointer mt-1" id="terms" required="" type="checkbox">
+<label class="text-on-surface-variant font-label-mono text-[12px] cursor-pointer" for="terms">I ACKNOWLEDGE THAT SPACE IS LIMITED AND HEADSETS ARE ISSUED ON A FIRST-COME BASIS.</label>
+</div>
+<!-- Submit -->
+<button class="group relative overflow-hidden bg-on-background text-background font-label-mono text-label-mono uppercase tracking-widest py-6 w-full transition-all duration-500 hover:bg-primary-container hover:text-background active:scale-[0.98]" type="submit">
+<span class="relative z-10 font-bold">SUBMIT REGISTRATION</span>
+<div class="absolute inset-0 bg-primary-container translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+</button>
+</form>
+</div>
+<p class="mt-8 font-label-mono text-label-mono text-center text-outline-variant uppercase">
+                    Registration Closes in 48 hours. Limited headset availability.
+                </p>
+</div>
+</div>
+</main>
+<!-- Success Modal (Hidden by default) -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-background/90 backdrop-blur-md hidden opacity-0 transition-opacity duration-500" id="successOverlay">
+<div class="text-center max-w-md px-6">
+<span class="material-symbols-outlined text-primary-container text-8xl mb-6" data-icon="check_circle">check_circle</span>
+<h2 class="font-display-lg text-headline-lg-mobile md:text-headline-lg uppercase mb-4">ACCESS GRANTED</h2>
+<p class="text-on-surface-variant font-body-lg mb-10">Your application has been received. Check your inbox for the digital entry pass and event coordinates.</p>
+<button class="font-label-mono text-label-mono uppercase bg-on-background text-background px-12 py-4 hover:bg-primary-container transition-colors" onclick="window.location.href='confirmation.html'">Return to Event Home</button>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-white/10 bg-background dark:bg-background">
+<div class="flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 md:px-8 lg:px-12 gap-gutter max-w-container-max mx-auto">
+<div class="font-display-lg text-headline-lg text-primary uppercase">SILENT DISCO</div>
+<div class="flex flex-col md:flex-row gap-6 items-center">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-container transition-colors" href="#">Privacy</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-container transition-colors" href="#">Terms</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-container transition-colors" href="#">Support</a>
+</div>
+<div class="font-label-mono text-label-mono text-on-background uppercase text-center md:text-right">© 2025 NOTION COMMUNITY. Organized by The Notion Club. ALL CHANNELS ACTIVE.</div>
+</div>
+</footer>
+<script>
+        // Mobile Hamburger Menu logic
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = menuBtn ? menuBtn.querySelector('.material-symbols-outlined') : null;
+        
+        if (menuBtn && mobileMenu) {
+            const mobileLinks = mobileMenu.querySelectorAll('a, button');
+            
+            function toggleMenu() {
+                const isOpen = mobileMenu.classList.contains('translate-y-0');
+                if (isOpen) {
+                    mobileMenu.classList.remove('translate-y-0');
+                    mobileMenu.classList.add('-translate-y-full');
+                    if (menuIcon) menuIcon.textContent = 'menu';
+                } else {
+                    mobileMenu.classList.remove('-translate-y-full');
+                    mobileMenu.classList.add('translate-y-0');
+                    if (menuIcon) menuIcon.textContent = 'close';
+                }
+            }
+            menuBtn.addEventListener('click', toggleMenu);
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('translate-y-0');
+                    mobileMenu.classList.add('-translate-y-full');
+                    if (menuIcon) menuIcon.textContent = 'menu';
+                });
+            });
+        }
+
+        // Generate unique ticket ID using: SD-2025-{timestamp-based unique value}
+        // Ensure collision probability is effectively zero.
+        function generateTicketId() {
+            const timestamp = Date.now();
+            const randomSuffix = Math.floor(100000 + Math.random() * 900000); // 6-digit random number
+            return `SD-2025-${timestamp}-${randomSuffix}`;
+        }
+
+
+        document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            console.log('Form submission started.');
+
+            // Get form inputs
+            const fullNameEl = document.getElementById('fullName');
+            const emailEl = document.getElementById('email');
+            const contactEl = document.getElementById('contact');
+            const branchEl = document.getElementById('college');
+            const academicYearEl = document.getElementById('academicYear');
+            const termsEl = document.getElementById('terms');
+
+            // 1. Validate Form (Required fields check)
+            if (!fullNameEl.value.trim() || !emailEl.value.trim() || !contactEl.value.trim() || 
+                !branchEl.value.trim() || !academicYearEl.value || !termsEl.checked) {
+                alert('Please fill in all required fields and accept the terms.');
+                console.warn('Form validation failed: Missing required fields.');
+                return;
+            }
+
+            const fullName = fullNameEl.value.trim();
+            const email = emailEl.value.trim();
+            const contact = contactEl.value.trim();
+            const branch = branchEl.value.trim();
+            const academicYear = academicYearEl.value;
+
+            // Basic animation for feedback
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="animate-pulse">PROCESSING...</span>';
+            btn.disabled = true;
+
+            const supabase = window.supabaseClient;
+            if (!supabase) {
+                console.error("Supabase client missing or not configured");
+                alert('Database Error: Registration server is not configured. Please contact the administrator.');
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                return;
+            }
+
+            try {
+                // 2. Check Duplicate Email
+                const { data: existingReg, error: checkError } = await supabase
+                    .from('registrations')
+                    .select('email')
+                    .eq('email', email);
+
+                if (checkError) {
+                    console.error('Error checking duplicate email:', checkError);
+                    alert(`Query Failure: Unable to verify registration status. Details: ${checkError.message}`);
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    return;
+                }
+
+                if (existingReg && existingReg.length > 0) {
+                    console.warn('Duplicate email found:', email);
+                    alert('This email address is already registered. Duplicate entries are not allowed.');
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    return;
+                }
+
+                // 3. Generate Ticket ID
+                const ticketId = generateTicketId();
+                const createdAt = new Date().toISOString();
+
+                // 4. Insert Into Supabase
+                const { data, error } = await supabase
+                    .from('registrations')
+                    .insert([
+                        {
+                            full_name: fullName,
+                            email: email,
+                            contact: contact,
+                            branch: branch,
+                            academic_year: academicYear,
+                            ticket_id: ticketId,
+                            created_at: createdAt
+                        }
+                    ]);
+
+                if (error) {
+                    console.error('Insert failed:', error);
+                    alert(`Registration failed: ${error.message || 'Database error occurred during insertion.'}`);
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    return;
+                }
+
+                console.log('Insert successful:', { fullName, ticketId });
+
+                // 5. Store Session Data
+                sessionStorage.setItem('full_name', fullName);
+                sessionStorage.setItem('email', email);
+                sessionStorage.setItem('ticket_id', ticketId);
+
+                // 6. Redirect To Confirmation Page
+                window.location.href = 'confirmation.html';
+
+            } catch (err) {
+                console.error('Unexpected error during registration:', err);
+                alert(`Unexpected error: ${err.message || 'Unable to complete registration due to a network or code failure.'}`);
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        });
+
+
+        // Floating label interactivity check for browsers that might need it
+        const inputs = document.querySelectorAll('input, textarea, select');
+        inputs.forEach(input => {
+            // Set initial state
+            if (input.value && input.value !== "") {
+                input.classList.add('has-content');
+            }
+            input.addEventListener('blur', (e) => {
+                if (e.target.value.length > 0) {
+                    e.target.classList.add('has-content');
+                } else {
+                    e.target.classList.remove('has-content');
+                }
+            });
+            input.addEventListener('change', (e) => {
+                if (e.target.value.length > 0) {
+                    e.target.classList.add('has-content');
+                } else {
+                    e.target.classList.remove('has-content');
+                }
+            });
+        });
+    </script>
+</body></html>

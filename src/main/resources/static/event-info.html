@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SILENT DISCO | Notion Community</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "primary-container": "#00f0ff",
+                "outline-variant": "#3b494b",
+                "surface-tint": "#00dbe9",
+                "on-surface-variant": "#b9cacb",
+                "error": "#ffb4ab",
+                "primary-fixed": "#7df4ff",
+                "on-secondary-container": "#b4b5b5",
+                "inverse-on-surface": "#313030",
+                "tertiary-container": "#dcd9d8",
+                "on-primary-container": "#006970",
+                "secondary-fixed": "#e2e2e2",
+                "surface-container-high": "#2a2a2a",
+                "primary": "#dbfcff",
+                "tertiary-fixed-dim": "#c8c6c5",
+                "on-background": "#e5e2e1",
+                "background": "#131313",
+                "on-primary-fixed-variant": "#004f54",
+                "surface-container-lowest": "#0e0e0e",
+                "on-tertiary-fixed": "#1c1b1b",
+                "on-secondary": "#2f3131",
+                "surface-bright": "#3a3939",
+                "on-secondary-fixed": "#1a1c1c",
+                "surface": "#131313",
+                "surface-container": "#201f1f",
+                "error-container": "#93000a",
+                "secondary": "#c6c6c7",
+                "on-error-container": "#ffdad6",
+                "outline": "#849495",
+                "on-primary-fixed": "#002022",
+                "surface-container-highest": "#353534",
+                "on-secondary-fixed-variant": "#454747",
+                "tertiary-fixed": "#e5e2e1",
+                "primary-fixed-dim": "#00dbe9",
+                "on-tertiary-fixed-variant": "#474746",
+                "inverse-surface": "#e5e2e1",
+                "on-error": "#690005",
+                "surface-variant": "#353534",
+                "secondary-fixed-dim": "#c6c6c7",
+                "on-primary": "#00363a",
+                "surface-container-low": "#1c1b1b",
+                "on-tertiary-container": "#5f5e5e",
+                "secondary-container": "#454747",
+                "tertiary": "#f8f5f5",
+                "surface-dim": "#131313",
+                "on-tertiary": "#313030",
+                "inverse-primary": "#006970",
+                "on-surface": "#e5e2e1"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "margin-mobile": "20px",
+                "container-max": "1200px",
+                "unit": "8px",
+                "margin-desktop": "64px",
+                "gutter": "24px"
+            },
+            "fontFamily": {
+                "display-lg": ["Anton"],
+                "label-mono": ["JetBrains Mono"],
+                "body-md": ["Inter"],
+                "body-lg": ["Inter"],
+                "headline-lg-mobile": ["Anton"],
+                "headline-lg": ["Anton"]
+            },
+            "fontSize": {
+                "display-lg": ["clamp(2.5rem, 8vw, 7rem)", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                "label-mono": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                "body-md": ["clamp(0.875rem, 1.2vw, 1rem)", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "body-lg": ["clamp(0.95rem, 1.5vw, 1.125rem)", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "headline-lg-mobile": ["clamp(1.75rem, 4vw, 2.5rem)", {"lineHeight": "1.2", "fontWeight": "400"}],
+                "headline-lg": ["clamp(2rem, 5vw, 4rem)", {"lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pulsate {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        .neon-border:hover {
+            border-color: #00f0ff;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-background/60 backdrop-blur-xl border-b border-white/10 h-20">
+<div class="flex justify-between items-center px-4 sm:px-6 md:px-8 lg:px-12 h-full w-full max-w-container-max mx-auto">
+<div class="font-display-lg text-headline-lg-mobile md:text-headline-lg text-on-background tracking-tighter uppercase whitespace-nowrap">SILENT DISCO</div>
+<div class="hidden md:flex gap-gutter items-center">
+<a class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="index.html">Home</a>
+<a class="font-label-mono text-label-mono uppercase tracking-widest text-primary-container border-b-2 border-primary-container pb-1" href="event-info.html">Event Info</a>
+<a class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="register.html">Register</a>
+</div>
+<div class="flex items-center gap-4">
+<button onclick="window.location.href='register.html'" class="hidden md:block bg-primary text-on-primary px-6 py-2 font-label-mono uppercase tracking-widest hover:bg-primary-container transition-all duration-300 scale-95 active:scale-90">
+                    Tickets
+                </button>
+<a href="admin.html" class="contents" aria-label="Admin Dashboard">
+<span onclick="window.location.href='admin.html'" aria-label="Admin Dashboard" class="material-symbols-outlined text-primary cursor-pointer text-3xl">account_circle</span>
+</a>
+<!-- Hamburger Button -->
+<button id="mobile-menu-btn" class="md:hidden text-primary p-1 focus:outline-none z-50 flex items-center justify-center">
+    <span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+</div>
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 pt-20 bg-background z-40 flex flex-col justify-center items-center gap-8 transition-transform duration-300 transform -translate-y-full md:hidden">
+<nav class="flex flex-col items-center gap-8">
+<a class="font-label-mono text-2xl uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="index.html">Home</a>
+<a class="font-label-mono text-2xl uppercase tracking-widest text-primary-container border-b-2 border-primary-container pb-1" href="event-info.html">Event Info</a>
+<a class="font-label-mono text-2xl uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="register.html">Register</a>
+</nav>
+<button onclick="window.location.href='register.html'" class="bg-primary text-on-primary font-label-mono text-label-mono px-8 py-3 uppercase tracking-widest hover:bg-primary-container transition-all active:scale-95 min-h-[48px]">
+    Tickets
+</button>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-4 sm:px-6 md:px-8 lg:px-12 py-20 bg-gradient-to-b from-surface-container-lowest to-background overflow-hidden opacity-0 opacity-100" style="transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); transform: translateY(0px);">
+<div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(circle at 50% 50%, #00f0ff 0%, transparent 70%);">
+</div>
+<div class="z-10 max-w-4xl w-full">
+<div class="flex items-center justify-center gap-3 mb-8">
+<span class="w-2 h-2 bg-primary-container rounded-full pulsate"></span>
+<span class="font-label-mono text-label-mono text-primary-container uppercase tracking-[0.3em]">Live Channel Active</span>
+</div>
+<h1 class="font-display-lg text-display-lg leading-none mb-12 tracking-tighter uppercase">SILENT DISCO</h1>
+<div class="flex flex-col md:flex-row justify-center gap-12 items-start md:items-center text-left">
+<!-- Save the Date -->
+<div class="flex items-start gap-4 group">
+<span class="material-symbols-outlined text-4xl text-primary-container">calendar_today</span>
+<div>
+<h3 class="font-display-lg text-headline-lg-mobile uppercase text-on-background">Save the Date</h3>
+<p class="font-body-lg text-on-surface-variant">18 Sept 2025</p>
+<p class="font-label-mono text-label-mono text-primary">1:15 PM to 4:20 PM</p>
+</div>
+</div>
+<!-- Venue -->
+<div class="flex items-start gap-4 group">
+<span class="material-symbols-outlined text-4xl text-primary-container">location_on</span>
+<div>
+<h3 class="font-display-lg text-headline-lg-mobile uppercase text-on-background">Venue</h3>
+<p class="font-body-lg text-on-surface-variant">NOTION HUB</p>
+<p class="font-label-mono text-label-mono text-primary">AB2-316</p>
+</div>
+</div>
+</div>
+<div class="mt-20 px-4">
+<button onclick="window.location.href='register.html'" class="w-full md:w-auto group relative px-12 py-5 bg-white text-black font-display-lg text-2xl uppercase tracking-widest hover:bg-primary-container transition-all duration-500 overflow-hidden min-h-[48px]">
+<span class="relative z-10">REGISTER NOW</span>
+<div class="absolute inset-0 bg-primary-container translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+</button>
+</div>
+</div>
+</section>
+<!-- DJ Section (Bento Grid Style) -->
+<section class="px-4 sm:px-6 md:px-8 lg:px-12 py-32 max-w-container-max mx-auto opacity-0 opacity-100" style="transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); transform: translateY(0px);">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+<div>
+<span class="font-label-mono text-label-mono text-primary-container uppercase mb-2 block tracking-widest">Sonic Explorers</span>
+<h2 class="font-display-lg text-headline-lg md:text-display-lg uppercase leading-none">FEATURED DJs</h2>
+</div>
+<div class="text-right max-w-sm">
+<p class="font-body-md text-on-surface-variant">The masters of the frequency. Meet the DJs who will be taking you on a silent sonic journey across three immersive channels.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter">
+<!-- DJ 1 -->
+<div class="md:col-span-2 lg:col-span-8 group relative aspect-[4/3] sm:aspect-video md:aspect-[16/9] overflow-hidden border border-white/10 neon-border bg-surface-container transition-all">
+<img alt="DJ CYAN performing deep house" class="w-full h-full object-cover transition-all duration-700 scale-105 group-hover:scale-100" src="assets/dj_cyan.png" loading="lazy"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-8 flex flex-col justify-end">
+<h4 class="font-display-lg text-headline-lg uppercase mb-2">DJ CYAN</h4>
+<p class="font-label-mono text-label-mono text-primary-container mb-4">BLUE CHANNEL — DEEP HOUSE</p>
+<p class="font-body-md text-on-surface-variant max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            Smooth basslines and atmospheric textures. Dive deep into the blue frequency for a soulful, immersive journey.
+                        </p>
+</div>
+</div>
+<!-- DJ 2 -->
+<div class="md:col-span-1 lg:col-span-4 group relative aspect-[4/3] sm:aspect-square md:aspect-auto overflow-hidden border border-white/10 neon-border bg-surface-container transition-all">
+<img alt="DJ MAGENTA spinning neon pop" class="w-full h-full object-cover transition-all duration-700" src="assets/dj_magenta.png" loading="lazy"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent p-6 flex flex-col justify-end">
+<h4 class="font-display-lg text-headline-lg-mobile uppercase">DJ MAGENTA</h4>
+<p class="font-label-mono text-label-mono text-primary-container">PINK CHANNEL — NEON POP</p>
+</div>
+</div>
+<!-- DJ 3 -->
+<div class="md:col-span-1 lg:col-span-4 group relative aspect-[4/3] sm:aspect-square md:aspect-auto overflow-hidden border border-white/10 neon-border bg-surface-container transition-all">
+<img alt="DJ NEON performing techno pulse" class="w-full h-full object-cover transition-all duration-700" src="assets/dj_neon.png" loading="lazy"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent p-6 flex flex-col justify-end">
+<h4 class="font-display-lg text-headline-lg-mobile uppercase">DJ NEON</h4>
+<p class="font-label-mono text-label-mono text-primary-container">GREEN CHANNEL — TECHNO PULSE</p>
+</div>
+</div>
+<!-- Bio Block -->
+<div class="md:col-span-2 lg:col-span-8 p-6 sm:p-8 md:p-12 border border-white/10 bg-surface-container-high flex flex-col justify-center">
+<span class="material-symbols-outlined text-primary-container text-5xl mb-6">format_quote</span>
+<blockquote class="font-display-lg text-headline-lg-mobile md:text-headline-lg uppercase mb-6 leading-tight">
+                        "SILENCE IS NOT THE ABSENCE OF SOUND, BUT THE PRESENCE OF FOCUSED ENERGY."
+                    </blockquote>
+<div class="h-1 w-24 bg-primary-container"></div>
+</div>
+</div>
+</section>
+<!-- Stats/Details Bar -->
+<section class="border-y border-white/10 bg-surface-container-lowest py-20 opacity-0" style="transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); transform: translateY(20px);">
+<div class="max-w-container-max mx-auto px-4 sm:px-6 md:px-8 lg:px-12 grid grid-cols-2 md:grid-cols-4 gap-gutter text-center">
+<div>
+<p class="font-display-lg text-headline-lg text-primary-container mb-2">3</p>
+<p class="font-label-mono text-label-mono uppercase">Live Channels</p>
+</div>
+<div>
+<p class="font-display-lg text-headline-lg text-primary-container mb-2">500+</p>
+<p class="font-label-mono text-label-mono uppercase">Participants</p>
+</div>
+<div>
+<p class="font-display-lg text-headline-lg text-primary-container mb-2">8K</p>
+<p class="font-label-mono text-label-mono uppercase">Watts of Energy</p>
+</div>
+<div>
+<p class="font-display-lg text-headline-lg text-primary-container mb-2">6.1K</p>
+<p class="font-label-mono text-label-mono uppercase">Community Interest</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 bg-background border-t border-white/10 mt-32">
+<div class="flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 md:px-8 lg:px-12 gap-gutter max-w-container-max mx-auto">
+<div class="font-display-lg text-headline-lg text-primary tracking-tighter text-center md:text-left">
+                SILENT DISCO
+            </div>
+<div class="text-center md:text-left">
+<p class="font-label-mono text-label-mono text-on-background uppercase tracking-widest">© 2025 NOTION COMMUNITY. Organized by The Notion Club. ALL CHANNELS ACTIVE.</p>
+</div>
+<div class="flex gap-8 justify-center">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-container transition-colors uppercase" href="#">Privacy</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-container transition-colors uppercase" href="#">Terms</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-container transition-colors uppercase" href="#">Support</a>
+</div>
+</div>
+</footer>
+<script>
+        // Mobile Hamburger Menu logic
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = menuBtn ? menuBtn.querySelector('.material-symbols-outlined') : null;
+        
+        if (menuBtn && mobileMenu) {
+            const mobileLinks = mobileMenu.querySelectorAll('a, button');
+            
+            function toggleMenu() {
+                const isOpen = mobileMenu.classList.contains('translate-y-0');
+                if (isOpen) {
+                    mobileMenu.classList.remove('translate-y-0');
+                    mobileMenu.classList.add('-translate-y-full');
+                    if (menuIcon) menuIcon.textContent = 'menu';
+                } else {
+                    mobileMenu.classList.remove('-translate-y-full');
+                    mobileMenu.classList.add('translate-y-0');
+                    if (menuIcon) menuIcon.textContent = 'close';
+                }
+            }
+            
+            menuBtn.addEventListener('click', toggleMenu);
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('translate-y-0');
+                    mobileMenu.classList.add('-translate-y-full');
+                    if (menuIcon) menuIcon.textContent = 'menu';
+                });
+            });
+        }
+
+        // Simple micro-interaction for scrolling parallax or revealing elements
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    section.classList.add('opacity-100');
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Initialize state for elements that should animate in
+        document.querySelectorAll('section').forEach(s => {
+            s.style.transition = 'all 1s cubic-bezier(0.2, 0.8, 0.2, 1)';
+            s.style.transform = 'translateY(20px)';
+            s.classList.add('opacity-0');
+        });
+        
+        // Initial trigger
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</body></html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Registration Successful - SILENT DISCO</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton:wght@100..900&amp;family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glow-on-hover:hover {
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            border-color: #00f0ff !important;
+        }
+        @keyframes pulse-cyan {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-pulse-cyan {
+            animation: pulse-cyan 3s infinite ease-in-out;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#00f0ff",
+                        "outline-variant": "#3b494b",
+                        "surface-tint": "#00dbe9",
+                        "on-surface-variant": "#b9cacb",
+                        "error": "#ffb4ab",
+                        "primary-fixed": "#7df4ff",
+                        "on-secondary-container": "#b4b5b5",
+                        "inverse-on-surface": "#313030",
+                        "tertiary-container": "#dcd9d8",
+                        "on-primary-container": "#006970",
+                        "secondary-fixed": "#e2e2e2",
+                        "surface-container-high": "#2a2a2a",
+                        "primary": "#dbfcff",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "on-background": "#e5e2e1",
+                        "background": "#131313",
+                        "on-primary-fixed-variant": "#004f54",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-secondary": "#2f3131",
+                        "surface-bright": "#3a3939",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface": "#131313",
+                        "surface-container": "#201f1f",
+                        "error-container": "#93000a",
+                        "secondary": "#c6c6c7",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#849495",
+                        "on-primary-fixed": "#002022",
+                        "surface-container-highest": "#353534",
+                        "on-secondary-fixed-variant": "#454747",
+                        "tertiary-fixed": "#e5e2e1",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "inverse-surface": "#e5e2e1",
+                        "on-error": "#690005",
+                        "surface-variant": "#353534",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-primary": "#00363a",
+                        "surface-container-low": "#1c1b1b",
+                        "on-tertiary-container": "#5f5e5e",
+                        "secondary-container": "#454747",
+                        "tertiary": "#f8f5f5",
+                        "surface-dim": "#131313",
+                        "on-tertiary": "#313030",
+                        "inverse-primary": "#006970",
+                        "on-surface": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "container-max": "1200px",
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Anton"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Anton"],
+                        "headline-lg": ["Anton"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["clamp(2.5rem, 8vw, 7rem)", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "400" }],
+                        "label-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                        "body-md": ["clamp(0.875rem, 1.2vw, 1rem)", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["clamp(0.95rem, 1.5vw, 1.125rem)", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["clamp(1.75rem, 4vw, 2.5rem)", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "headline-lg": ["clamp(2rem, 5vw, 4rem)", { "lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- Success Shell (Transactional Mode: Navigation Suppressed as per mandate) -->
+<main class="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 py-20 relative overflow-hidden">
+<!-- Ambient Background Glows -->
+<div class="absolute -top-40 -left-40 w-96 h-96 bg-primary-container/10 rounded-full blur-[120px]"></div>
+<div class="absolute -bottom-40 -right-40 w-96 h-96 bg-primary-container/5 rounded-full blur-[120px]"></div>
+<!-- Success Header Section -->
+<div class="text-center mb-16 relative z-10 max-w-4xl">
+<div class="inline-flex items-center justify-center w-24 h-24 rounded-full border-2 border-primary-container mb-8 animate-pulse-cyan">
+<span class="material-symbols-outlined text-primary-container text-6xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg uppercase mb-4 text-on-background tracking-tighter">
+                REGISTRATION SUCCESSFUL!
+            </h1>
+<div class="w-24 h-1 bg-primary-container mx-auto mb-6"></div>
+<p class="font-label-mono text-label-mono uppercase tracking-[0.2em] text-on-surface-variant">
+                YOU ARE ON THE LIST. SEE YOU AT THE DISCO.
+            </p>
+</div>
+<!-- Event Bento Details -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter w-full max-w-container-max relative z-10">
+<!-- Branding Accent Card -->
+<div class="md:col-span-12 lg:col-span-4 bg-surface-container-low border border-white/10 p-10 flex flex-col justify-between group glow-on-hover transition-all duration-500">
+<div>
+<div class="mb-4">
+<span class="font-label-mono text-label-mono text-primary-container uppercase">Event Title</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg uppercase leading-none">SILENT DISCO</h2>
+</div>
+<div class="mt-12 flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">graphic_eq</span>
+<span class="font-label-mono text-label-mono uppercase">Silent Disco Experience</span>
+</div>
+</div>
+<!-- Date & Time Card -->
+<div class="md:col-span-6 lg:col-span-4 bg-surface-container border border-white/10 p-10 flex flex-col gap-8 glow-on-hover transition-all duration-500">
+<div class="flex items-start justify-between">
+<span class="material-symbols-outlined text-primary-container text-4xl">calendar_today</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">01 / 03</span>
+</div>
+<div>
+<h3 class="font-label-mono text-label-mono uppercase text-on-surface-variant mb-2">Save the Date</h3>
+<p class="font-headline-lg text-headline-lg-mobile md:text-headline-lg">18 SEPT 2025</p>
+<p class="font-body-lg text-body-lg text-primary-container mt-2">1:15 PM — 4:20 PM</p>
+</div>
+</div>
+<!-- Venue Card -->
+<div class="md:col-span-6 lg:col-span-4 bg-surface-container-high border border-white/10 p-10 flex flex-col gap-8 glow-on-hover transition-all duration-500">
+<div class="flex items-start justify-between">
+<span class="material-symbols-outlined text-primary-container text-4xl">location_on</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">02 / 03</span>
+</div>
+<div>
+<h3 class="font-label-mono text-label-mono uppercase text-on-surface-variant mb-2">Venue</h3>
+<p class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase">AB2-316</p>
+<p class="font-body-lg text-body-lg text-on-background mt-2">Main Campus District</p>
+</div>
+<div class="mt-auto pt-4 border-t border-white/5">
+<a class="font-label-mono text-label-mono uppercase text-primary-container flex items-center gap-2 hover:gap-4 transition-all" href="#">
+                        View Map <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Actions / QR Section -->
+<div class="md:col-span-12 lg:col-span-8 bg-surface-container-lowest border border-white/10 p-10 flex flex-col md:flex-row items-center gap-10 glow-on-hover transition-all duration-500">
+<div class="w-48 h-48 bg-white p-3 rounded-none flex items-center justify-center shrink-0">
+<img alt="Entry QR Code" class="w-full h-full grayscale invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWVRGxEagS_JAplQMLQe4Uu-VCJUe5zyu-5et40dn42CN37kSA-xG9ssXfBswLdgYTC0EyfASrbbXSZzLDqj90O2OPHSLiRLFB_C5eA2yuflnmAMTySnNBc32NlB1zi4p7P6v1f3iVbvAH34_34agBkLMH3iVLMCtj31nOSPgS5yR33GkpqsoI4mCReb7xx695PEUigZhiRf9CMMnepChSRFODAl25joKSdxlUYahk6_GrqDcLpK_MM6lAY8uLLm4NJhdbrQtXEYuU" loading="lazy">
+</div>
+<div class="flex-grow text-center md:text-left w-full">
+<h3 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase mb-2">YOUR DIGITAL PASS</h3>
+<p class="font-body-md text-on-surface-variant mb-6">Screenshot this code or check your email for the confirmation ticket. Present this at the entrance for headphone pickup.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start w-full">
+<button id="downloadTicketBtn" class="w-full sm:w-auto bg-primary text-background font-label-mono text-label-mono px-8 py-4 uppercase hover:bg-primary-container transition-colors duration-300 min-h-[48px]">
+                            Download Ticket
+                        </button>
+<button id="addToCalendarBtn" class="w-full sm:w-auto border border-white/20 text-on-background font-label-mono text-label-mono px-8 py-4 uppercase hover:border-primary-container transition-colors duration-300 min-h-[48px]">
+                            Add to Calendar
+                        </button>
+</div>
+</div>
+</div>
+<!-- Attendees Social Proof -->
+<div class="md:col-span-12 lg:col-span-4 bg-background border border-primary-container/30 p-10 flex flex-col justify-center items-center text-center glow-on-hover transition-all duration-500">
+<span class="material-symbols-outlined text-primary-container text-5xl mb-4">group</span>
+<div class="font-display-lg text-headline-lg leading-none">6,121</div>
+<div class="font-label-mono text-label-mono uppercase text-on-surface-variant mt-2 tracking-widest">OTHERS JOINING</div>
+<div class="flex -space-x-3 mt-6 justify-center">
+<div class="w-10 h-10 rounded-full border-2 border-background bg-surface-container-highest"></div>
+<div class="w-10 h-10 rounded-full border-2 border-background bg-surface-container-high"></div>
+<div class="w-10 h-10 rounded-full border-2 border-background bg-surface-container"></div>
+<div class="w-10 h-10 rounded-full border-2 border-background bg-primary-container flex items-center justify-center text-[10px] text-on-primary-container font-bold">+6K</div>
+</div>
+</div>
+</div>
+<!-- Footer Call to Action -->
+<div class="mt-20 text-center flex justify-center">
+<a class="font-label-mono text-label-mono uppercase text-on-surface-variant hover:text-primary-container transition-colors flex items-center gap-2" href="index.html">
+<span class="material-symbols-outlined text-sm">keyboard_backspace</span> Return to Home
+            </a>
+</div>
+</main>
+<!-- Essential Footer as per JSON -->
+<footer class="w-full py-12 bg-background dark:bg-background border-t border-white/10 px-4 sm:px-6 md:px-8 lg:px-12">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-gutter">
+<div class="font-display-lg text-headline-lg text-primary uppercase">SILENT DISCO</div>
+<div class="flex flex-col items-center md:items-end gap-4">
+<div class="flex gap-8 font-label-mono text-label-mono uppercase justify-center">
+<a class="text-on-surface-variant hover:text-primary-container transition-colors" href="#">Privacy</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors" href="#">Terms</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors" href="#">Support</a>
+</div>
+<p class="font-label-mono text-label-mono text-on-surface-variant mb-1">Organized by The Notion Club</p><p class="font-label-mono text-label-mono text-on-surface-variant">© 2025 NOTION COMMUNITY. ALL CHANNELS ACTIVE.</p>
+</div>
+</div>
+</footer>
+<script>
+        // Read attendee details from sessionStorage
+        const fullName = sessionStorage.getItem('full_name');
+        const email = sessionStorage.getItem('email');
+        const ticketId = sessionStorage.getItem('ticket_id');
+        
+        // If sessionStorage is empty, redirect back to register.html
+        if (!fullName || !email || !ticketId) {
+            console.warn('Session storage is empty. Redirecting back to register.html.');
+            window.location.href = 'register.html';
+        } else {
+            console.log('Session data loaded successfully:', { fullName, ticketId });
+            
+            // Populate Attendee name, Ticket ID, and success message
+            const successHeading = document.querySelector('main h1');
+            if (successHeading) {
+                successHeading.textContent = `REGISTRATION SUCCESSFUL, ${fullName.toUpperCase()}!`;
+            }
+            
+            const successSubtext = document.querySelector('main p.font-label-mono');
+            if (successSubtext) {
+                successSubtext.textContent = `YOU ARE ON THE LIST. TICKET ID: ${ticketId}`;
+            }
+            
+            const passHeading = document.querySelector('.bg-surface-container-lowest h3');
+            if (passHeading) {
+                passHeading.textContent = `YOUR DIGITAL PASS: ${ticketId}`;
+            }
+        }
+
+        // Download Ticket Functionality
+        document.getElementById('downloadTicketBtn').addEventListener('click', () => {
+            const fullNameVal = sessionStorage.getItem('full_name') || 'N/A';
+            const ticketIdVal = sessionStorage.getItem('ticket_id') || 'N/A';
+            
+            const ticketWindow = window.open('', '_blank');
+            ticketWindow.document.write(`
+                <html>
+                <head>
+                    <title>Ticket - Silent Disco</title>
+                    <style>
+                        body {
+                            font-family: 'Courier New', Courier, monospace;
+                            background-color: #fff;
+                            color: #000;
+                            text-align: center;
+                            padding: 50px;
+                        }
+                        .ticket-box {
+                            border: 5px double #000;
+                            padding: 30px;
+                            max-width: 500px;
+                            margin: 0 auto;
+                            background-color: #fff;
+                        }
+                        .title {
+                            font-size: 32px;
+                            font-weight: bold;
+                            margin-bottom: 20px;
+                            border-bottom: 2px solid #000;
+                            padding-bottom: 10px;
+                        }
+                        .detail-row {
+                            font-size: 18px;
+                            margin: 15px 0;
+                            text-align: left;
+                        }
+                        .label {
+                            font-weight: bold;
+                        }
+                        .footer-msg {
+                            margin-top: 30px;
+                            font-size: 14px;
+                            border-top: 1px dashed #000;
+                            padding-top: 15px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="ticket-box">
+                        <div class="title">SILENT DISCO TICKET</div>
+                        <div class="detail-row"><span class="label">Event:</span> Silent Disco</div>
+                        <div class="detail-row"><span class="label">Attendee:</span> ${fullNameVal}</div>
+                        <div class="detail-row"><span class="label">Ticket ID:</span> ${ticketIdVal}</div>
+                        <div class="detail-row"><span class="label">Event Date:</span> 18 Sept 2025</div>
+                        <div class="detail-row"><span class="label">Venue:</span> AB2-316</div>
+                        <div class="footer-msg">Present this ticket at the entrance for headphone pickup.</div>
+                    </div>
+                    <script>
+                        window.onload = function() {
+                            window.print();
+                            window.onafterprint = function() {
+                                window.close();
+                            };
+                            setTimeout(function() {
+                                window.close();
+                            }, 500);
+                        };
+                    <\/script>
+                </body>
+                </html>
+            `);
+            ticketWindow.document.close();
+        });
+
+        // Add to Calendar Functionality (ICS download)
+        document.getElementById('addToCalendarBtn').addEventListener('click', () => {
+            const icsContent = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//Silent Disco//NONSGML Event//EN',
+                'BEGIN:VEVENT',
+                'UID:' + new Date().getTime() + '@silentdisco.com',
+                'DTSTAMP:20250918T131500Z',
+                'DTSTART:20250918T131500',
+                'DTEND:20250918T162000',
+                'SUMMARY:Silent Disco',
+                'DESCRIPTION:Experience three live DJs across three unique channels!',
+                'LOCATION:AB2-316',
+                'END:VEVENT',
+                'END:VCALENDAR'
+            ].join('\r\n');
+
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.setAttribute('download', 'silent_disco.ics');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
+        // Micro-interaction for the QR code container
+        document.querySelector('.glow-on-hover').addEventListener('mousemove', (e) => {
+            const rect = e.target.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            e.target.style.setProperty('--mouse-x', `${x}px`);
+            e.target.style.setProperty('--mouse-y', `${y}px`);
+        });
+    </script>
+</body></html>

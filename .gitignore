@@ -1,0 +1,23 @@
+# .gitignore
+
+# Target directory (compiled classes and packaged jars)
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Log files
+*.log
+
+# IDE files and settings
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+bin/
+
+# OS temporary files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
