@@ -1,6 +1,6 @@
 # Silent Disco DevOps - College Event Website
 
-An IBM DevOps assignment based on a static multi-page website converted into a standardized Spring Boot Maven application running on Java 23. This project acts as the foundation for modern CI/CD, Containerization, Orchestration, and Monitoring practices.
+A Project based on a static multi-page website converted into a standardized Spring Boot Maven application running on Java 21. This project acts as the foundation for modern CI/CD, Containerization, Orchestration, and Monitoring practices.
 
 ## Project Overview
 This repository contains a responsive, dark-themed **Silent Disco College Event Website**. Originally built as a static client-side web application integrating Supabase database client for user registrations, the application has been wrapped in a Spring Boot Maven web structure. The backend Tomcat web server hosts the website and serves all assets (HTML, CSS, JS, images) statically at the root context directory, preserving all relative file paths.
@@ -18,7 +18,7 @@ This repository contains a responsive, dark-themed **Silent Disco College Event 
 ---
 
 ## Technologies Used
-* **Core Language:** Java 23
+* **Core Language:** Java 21
 * **Framework:** Spring Boot 3.3.4 (Starter Web, Starter Test)
 * **Build System:** Apache Maven (with Maven Wrapper `mvnw`)
 * **Frontend Web Stack:** HTML5, CSS3, Tailwind CSS (via CDN), JavaScript (ES6)
@@ -64,30 +64,30 @@ Silent-Disco-DevOps/
 ## Build Instructions
 
 ### Prerequisites
-Before compiling the project, verify that **Java 23 JDK** is installed on your operating system:
+Before compiling the project, verify that **Java 21/25 JDK** is installed on your operating system:
 ```cmd
 java -version
 ```
-Additionally, ensure you set the `JAVA_HOME` environment variable to point to your JDK installation (e.g. `C:\Program Files\Java\jdk-23` on Windows).
+Additionally, ensure you set the `JAVA_HOME` environment variable to point to your JDK installation (e.g. `C:\Program Files\Java\jdk-21` on Windows).
 
 ### Compiling and Packaging
 To clean, compile, run tests, and package the application into an executable fat-jar:
 
 **Windows CMD:**
 ```cmd
-set JAVA_HOME=C:\Program Files\Java\jdk-23
+set JAVA_HOME=C:\Program Files\Java\jdk-21
 mvnw.cmd clean package
 ```
 
 **PowerShell:**
 ```powershell
-$env:JAVA_HOME = "C:\Program Files\Java\jdk-23"
+$env:JAVA_HOME = "C:\Program Files\Java\jdk-21"
 .\mvnw.cmd clean package
 ```
 
 **macOS / Linux:**
 ```bash
-export JAVA_HOME=/path/to/jdk-23
+export JAVA_HOME=/path/to/jdk-21
 chmod +x mvnw
 ./mvnw clean package
 ```
@@ -102,13 +102,13 @@ To run the embedded Apache Tomcat server locally on port `8080`:
 
 **Windows CMD:**
 ```cmd
-set JAVA_HOME=C:\Program Files\Java\jdk-23
+set JAVA_HOME=C:\Program Files\Java\jdk-21
 mvnw.cmd spring-boot:run
 ```
 
 **PowerShell:**
 ```powershell
-$env:JAVA_HOME = "C:\Program Files\Java\jdk-23"
+$env:JAVA_HOME = "C:\Program Files\Java\jdk-21"
 .\mvnw.cmd spring-boot:run
 ```
 
@@ -118,19 +118,12 @@ Once running, access the local website at:
 ---
 
 ## Future DevOps Pipeline (Next Stages)
-As part of the IBM DevOps requirements, this project is structured for seamless integration with modern automated pipelines:
+This project is structured for seamless integration with modern automated pipelines:
 1. **Source Control (GitHub):** Standard project repository structure and `.gitignore` setup.
 2. **Continuous Integration (Jenkins):** Scripted Jenkinsfile deployment using `./mvnw clean package` for automated code verification.
-3. **Containerization (Docker):** Standard Multi-Stage Dockerfile containing JDK 23 runtime environments.
+3. **Containerization (Docker):** Standard Multi-Stage Dockerfile containing JDK 21 runtime environments.
 4. **Orchestration (Kubernetes):** Kubernetes manifest deployments (`deployment.yaml`, `service.yaml`) for auto-scaling and traffic routing.
 5. **Monitoring & Logging (Nagios / Graphite / Grafana):** Incorporating Spring Boot Actuator metrics pushed to Prometheus/Graphite registries, with Grafana dashboards for visualization and Nagios health checks.
 
----
-
-## Screenshots
-*(Place event portal interface images and terminal running screenshots here)*
-
----
-
 ## Author
-IBM DevOps Assignment - Event Web Application Migration Project.
+Adityesh Raghav
