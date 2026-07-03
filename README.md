@@ -1,20 +1,47 @@
 # Silent Disco DevOps - Event Website & Deployment Infrastructure
 
-A responsive, modern dark-themed Silent Disco college event website wrapped in a standardized Spring Boot Maven application running on Java 21. This repository implements and showcases best practices in automated CI/CD pipelines, containerization, orchestration, infrastructure monitoring, and metrics visualization.
+This repository demonstrates a complete DevOps lifecycle built around a Spring Boot Silent Disco event web application. It showcases a modern automated pipeline, containerization, local cluster orchestration, and unified monitoring, logging, and performance visualization metrics.
+
+## Build Status
+
+- ✅ Spring Boot Application
+- ✅ Maven Build
+- ✅ Jenkins CI/CD Pipeline
+- ✅ Docker Containerization
+- ✅ Kubernetes Deployment
+- ✅ Nagios Monitoring
+- ✅ Graphite Metrics Collection
+- ✅ Grafana Dashboards
 
 ---
 
-## Features
+## Architecture Overview
 
-- **Spring Boot Web Application**: Houses the static multi-page website (including registration, event info, and ticket confirmation) served at the root context directory via an embedded Apache Tomcat server.
-- **Maven Build System**: Modular lifecycle management compiled and packaged cleanly utilizing portable Maven Wrapper commands.
-- **Jenkins CI/CD Pipeline**: Scripted build automation pipeline validating checkout, compilation, unit tests, packaging, and archiving.
-- **Docker Containerization**: Production-ready, multi-stage Docker builds separating the compilation environment (JDK 21) from the minimal execution environment (JRE 21) to optimize image size and security.
-- **Kubernetes Deployment**: Orchestration configurations declaring dual replicas, liveness/readiness health probes, and a NodePort service mapping port 30080 on Docker Desktop's Kubernetes cluster.
-- **Nagios Monitoring**: Proactive host and availability checks ensuring the cluster node and HTTP web app pages respond with code 200 OK.
-- **Graphite Metrics Collection**: Carbon TCP/UDP line receivers collecting performance metrics and storing them in persistent Whisper time-series database directories.
-- **Grafana Dashboards**: File-based auto-provisioned dashboards rendering live graphs for custom app clicks and internal system CPU metrics.
-- **GitHub Version Control**: Standardized directory structure, exclusion definitions (.gitignore, .dockerignore), and pipeline configurations.
+```text
+GitHub
+    │
+    ▼
+Jenkins CI/CD
+    │
+    ▼
+Maven Build
+    │
+    ▼
+Docker Image
+    │
+    ▼
+Kubernetes Cluster
+    │
+    ▼
+Spring Boot Application
+    │
+    ├────────► Nagios
+    │
+    └────────► Graphite
+                     │
+                     ▼
+                 Grafana
+```
 
 ---
 
@@ -33,6 +60,29 @@ A responsive, modern dark-themed Silent Disco college event website wrapped in a
 | **Grafana** | Operational Dashboards & Visualization | v10.4.2 |
 | **Git** | Distributed Version Control | Local Engine |
 | **GitHub** | Remote Source Code Hosting | Repository |
+
+---
+
+## Features
+
+- **Spring Boot Web Application**: Houses the static multi-page website (including registration, event info, and ticket confirmation) served at the root context directory via an embedded Apache Tomcat server.
+- **Maven Build System**: Modular lifecycle management compiled and packaged cleanly utilizing portable Maven Wrapper commands.
+- **Jenkins CI/CD Pipeline**: Scripted build automation pipeline validating checkout, compilation, unit tests, packaging, and archiving.
+- **Docker Containerization**: Production-ready, multi-stage Docker builds separating the compilation environment (JDK 21) from the minimal execution environment (JRE 21) to optimize image size and security.
+- **Kubernetes Deployment**: Orchestration configurations declaring dual replicas, liveness/readiness health probes, and a NodePort service mapping port 30080 on Docker Desktop's Kubernetes cluster.
+- **Nagios Monitoring**: Proactive host and availability checks ensuring the cluster node and HTTP web app pages respond with code 200 OK.
+- **Graphite Metrics Collection**: Carbon TCP/UDP line receivers collecting performance metrics and storing them in persistent Whisper time-series database directories.
+- **Grafana Dashboards**: File-based auto-provisioned dashboards rendering live graphs for custom app clicks and internal system CPU metrics.
+- **GitHub Version Control**: Standardized directory structure, exclusion definitions (.gitignore, .dockerignore), and pipeline configurations.
+
+---
+
+## Application Pages
+
+- **Home**: Dark-themed interactive bento grid representing event channels, features, and social integration.
+- **Event Information**: Detailed guide covering schedule times, location details, and channel details.
+- **Registration**: Ticket reservation form validating client input and generating reservation IDs.
+- **Confirmation**: Final ticket verification screen containing details, dynamic dates, and security codes.
 
 ---
 
@@ -91,7 +141,7 @@ Silent-Disco-DevOps/
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/Silent-Disco-DevOps.git
+git clone https://github.com/Xcodes-sudo/Silent-Disco-DevOps.git
 cd Silent-Disco-DevOps
 ```
 
@@ -129,7 +179,7 @@ docker run -d --name silent-disco-container -p 8081:8080 silent-disco-app:latest
 Access the application at [http://localhost:8081/](http://localhost:8081/).
 
 ### 5. Deploy to Kubernetes
-Apply the Deployment and NodePort Service manifests on your local cluster:
+Apply the deployment configuration to launch **2 replicas** managed by a Kubernetes Deployment and expose it via a NodePort Service:
 ```bash
 # Deploy manifests
 kubectl apply -f deployment.yaml
@@ -161,7 +211,7 @@ The `Jenkinsfile` configures a declarative pipeline containing the following cor
 
 1. **Checkout**: Retrieves the latest application codebase from the repository.
 2. **Clean Workspace**: Wipes any previous build artifacts to guarantee a clean compile.
-3. **Build**: Runs `mvnw compile` to compile application classes.
+3. **Build**: Runs `mvnw clean compile` to compile application classes.
 4. **Test**: Executes unit test suites to prevent regression errors.
 5. **Package**: Compiles and packages binaries into `target/devops-0.0.1-SNAPSHOT.jar`, skipping test runs for efficiency.
 6. **Archive Artifacts**: Archives and stores the generated JAR file in Jenkins for release tracking.
@@ -178,27 +228,6 @@ The monitoring infrastructure consists of three interconnected systems:
   - *URL*: [http://localhost:8083/](http://localhost:8083/)
 - **Grafana (Port 8084)**: Displays beautiful visual telemetry dashboards. It is pre-configured to query Graphite as its default datasource, plotting host resource statistics alongside custom application click-rate events.
   - *URL*: [http://localhost:8084/](http://localhost:8084/) (Credentials: `admin` / `admin`)
-
----
-
-## Screenshots
-
-*Note: Replace these placeholders with actual screenshots from your running deployment environments.*
-
-### Jenkins CI/CD Pipeline Execution
-![Jenkins Pipeline Placeholder](https://via.placeholder.com/800x400.png?text=Jenkins+CI-CD+Pipeline+Success+Screenshot)
-
-### Docker Container Running
-![Docker Status Placeholder](https://via.placeholder.com/800x400.png?text=Docker+Container+Execution+Screenshot)
-
-### Kubernetes Resources Deployments & Pods
-![Kubernetes Resources Placeholder](https://via.placeholder.com/800x400.png?text=Kubectl+Get+Pods+and+Deployments+Screenshot)
-
-### Nagios Core Dashboard (Host & Services)
-![Nagios Status Placeholder](https://via.placeholder.com/800x400.png?text=Nagios+Core+Hosts+and+HTTP+Checks+UP+Screenshot)
-
-### Grafana Visualization Dashboard
-![Grafana Performance Dashboard](https://via.placeholder.com/800x400.png?text=Grafana+Dashboard+Metrics+Charts+Screenshot)
 
 ---
 
