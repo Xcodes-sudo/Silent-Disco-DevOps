@@ -1,0 +1,23 @@
+# Maven build output
+target/
+
+# Version control
+.git/
+.github/
+
+# IDE files
+.idea/
+.vscode/
+
+# Documentation
+README.md
+
+# Logs
+logs/
+*.log
+
+# Temporary and cache files
+tmp/
+temp/
+.DS_Store
+Thumbs.db
