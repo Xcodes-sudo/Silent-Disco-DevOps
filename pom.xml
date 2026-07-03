@@ -14,7 +14,7 @@
 	<name>silent-disco-devops</name>
 	<description>IBM DevOps Assignment - Silent Disco Event Website</description>
 	<properties>
-		<java.version>23</java.version>
+		<java.version>21</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
