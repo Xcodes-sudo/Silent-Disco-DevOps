@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  nagios:
+    image: jasonrivers/nagios:latest
+    container_name: nagios-server
+    ports:
+      - "8082:80"
+    environment:
+      - NAGIOSADMIN_USER=nagiosadmin
+      - NAGIOSADMIN_PASS=nagiosadmin
+    volumes:
+      - ./nagios/conf.d:/opt/nagios/etc/conf.d
+    networks:
+      - kind
+    restart: always
+
+  graphite:
+    image: graphiteapp/graphite-statsd:1.1.10-4
+    container_name: graphite-server
+    ports:
+      - "8083:80"
+      - "2003:2003"
+      - "2003:2003/udp"
+      - "2004:2004"
+      - "8125:8125/udp"
+      - "8126:8126"
+    volumes:
+      - graphite-storage:/opt/graphite/storage
+      - graphite-config:/opt/graphite/conf
+    networks:
+      - kind
+    restart: always
+
+  grafana:
+    image: grafana/grafana:10.4.2
+    container_name: grafana-server
+    ports:
+      - "8084:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana-storage:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    networks:
+      - kind
+    restart: always
+
+networks:
+  kind:
+    name: kind
+    external: true
+
+volumes:
+  graphite-storage:
+  graphite-config:
+  grafana-storage:

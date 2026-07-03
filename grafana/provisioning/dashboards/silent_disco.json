@@ -1,0 +1,108 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "title": "Demonstration Clicks",
+      "type": "timeseries",
+      "datasource": {
+        "type": "graphite",
+        "uid": "P1D261A8554D2DA69"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "P1D261A8554D2DA69"
+          },
+          "refId": "A",
+          "target": "silent_disco.demo.clicks"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "smooth"
+          }
+        }
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 2,
+      "title": "Carbon Agent CPU Usage",
+      "type": "timeseries",
+      "datasource": {
+        "type": "graphite",
+        "uid": "P1D261A8554D2DA69"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "graphite",
+            "uid": "P1D261A8554D2DA69"
+          },
+          "refId": "A",
+          "target": "carbon.agents.*.cpuUsage"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "smooth"
+          }
+        }
+      }
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Silent Disco Performance & Demo",
+  "uid": "silent_disco_dashboard",
+  "version": 1
+}
